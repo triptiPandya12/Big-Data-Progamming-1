@@ -1,0 +1,241 @@
+#Name: Tripti Pandya
+#CODE CHALLENGE 2
+#Card game without Spells
+
+import random
+from random import randint
+import time
+
+
+def cardGame():
+    global cardDict
+    cardDict = {'Mew': '10', 'Charizard': '8', 'Pikachu': '9', 'Eevee': '6','Blastoise':'7',"Snorlax": "1","Onyx":"5","Arcanine":"3"}
+    cardDeck = list(cardDict.keys())
+    random.shuffle(cardDeck)
+    global player1, player2
+    player1 = cardDeck[len(cardDeck) // 2:]
+    print(player1)
+    player2 = cardDeck[:len(cardDeck) // 2]
+    print(player2)
+
+
+def dice_roll():
+
+    global v1
+    global v2
+
+    v1 = randint(1, 6)
+    print("Dice value of Player 1:", v1)
+
+    v2 = randint(1, 6)
+    print("Dice value of Player 2:", v2)
+
+    while(v1==v2):
+
+        v1 = randint(1, 6)
+        print("Dice value of Player 1 again:", v1)
+
+        v2 = randint(1, 6)
+        print("Dice value of Player 2 again:", v2)
+
+
+def round1():
+    global x, y, cardP1, cardP2
+    if v1 > v2:
+        print("\nPlayer 1 begins the round\n")
+        # card_pick_player1()
+        global cardP1
+        global x
+        cardP1 = player1.pop(0)
+        x = cardDict.get(cardP1)
+
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+        # card_pick_player2()
+        # global cardP2
+        # global y
+        cardP2 = player2.pop(0)
+        y = cardDict.get(cardP2)
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+
+
+    else:
+        print("\nPlayer 2 begins the round\n")
+        # card_pick_player2()
+        # global cardP2
+        # global y
+        cardP2 = player2.pop(0)
+        y = cardDict.get(cardP2)
+
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+        # card_pick_player1()
+        # global cardP1
+        # global x
+        cardP1 = player1.pop(0)
+        x = cardDict.get(cardP1)
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+
+
+
+
+def win():
+    global x, y, cardP1, cardP2
+
+    if x > y:
+        print("\nPlayer 1 wins\n")
+        # global scoreP1
+        # scoreP1 = 0
+        # scoreP1 += 1
+
+
+    else:
+        print("\nPlayer 2 wins\n")
+        # global scoreP2
+        # scoreP2 = 0
+        # scoreP2 += 1
+
+def score_increment():
+    global scoreP1, scoreP2
+    if x > y:
+        scoreP1 += 1
+
+    else:
+        scoreP2 += 1
+
+
+def round2():
+    global x, y, cardP1, cardP2
+
+
+    if x > y:
+        print("\nPlayer 1 begins the round\n")
+        # card_pick_player1()
+        # global cardP1
+        # global x
+        cardP1 = player1.pop(0)
+        x = cardDict.get(cardP1)
+
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+        # card_pick_player2()
+        # global cardP2
+        # global y
+        cardP2 = player2.pop(0)
+        y = cardDict.get(cardP2)
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+
+
+
+    else:
+        print("\nPlayer 2 begins the round\n")
+        # card_pick_player2()
+        # global cardP2
+        # global y
+        cardP2 = player2.pop(0)
+        y = cardDict.get(cardP2)
+
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+        # card_pick_player1()
+        # global cardP1
+        # global x
+        cardP1 = player1.pop(0)
+        x = cardDict.get(cardP1)
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+
+def round3():
+    global x, y, cardP1, cardP2
+    if x > y:
+        print("\nPlayer 1 begins the round\n")
+
+        cardP1 = player1.pop(0)
+        x = cardDict.get(cardP1)
+
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+
+        cardP2 = player2.pop(0)
+        y = cardDict.get(cardP2)
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+
+    else:
+        print("\nPlayer 2 begins the round\n")
+        cardP2 = player2.pop(0)
+        y = cardDict.get(cardP2)
+
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+
+        cardP1 = player1.pop(0)
+        x = cardDict.get(cardP1)
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+
+
+def round4():
+    global x, y, cardP1, cardP2
+    if x > y:
+        print("\nPlayer 1 begins the round\n")
+        cardP1 = player1.pop()
+        x = cardDict.get(cardP1)
+
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+        cardP2 = player2.pop()
+        y = cardDict.get(cardP2)
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+
+
+    else:
+        print("\nPlayer 2 begins the round\n")
+        cardP2 = player2.pop()
+        y = cardDict.get(cardP2)
+
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+        cardP1 = player1.pop()
+        x = cardDict.get(cardP1)
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+
+
+
+# function calling
+cardGame()
+dice_roll()
+round1()
+deck2 = []
+deck2.insert(0,cardP1)
+deck2.insert(1,cardP2)
+
+win()
+global scoreP1
+global scoreP2
+if x>y:
+    scoreP1 = 1
+    scoreP2=0
+else:
+    scoreP2=1
+    scoreP1=0
+# round 2
+round2()
+deck2.insert(2,cardP1)
+deck2.insert(3,cardP2)
+print(deck2)
+win()
+score_increment()
+
+# round 3
+round3()
+deck2.insert(4,cardP1)
+deck2.insert(5,cardP2)
+win()
+score_increment()
+
+# Round 4
+round4()
+deck2.insert(6,cardP1)
+deck2.insert(7,cardP2)
+win()
+
+print("Final score of player 1 = ", scoreP1)
+
+print("Final score of player 2 = ", scoreP2)
+
+if scoreP1>scoreP2:
+    print("\nPlayer 1 is the WINNER!\n")
+else:
+    print("\nPlayer 2 is the WINNER!\n")
+
+
