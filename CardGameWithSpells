@@ -1,0 +1,590 @@
+#				CODE CHALLENGE 2
+#Name : Tripti Pandya
+#Card game with spells
+
+import random
+from random import randint
+import time
+
+
+# class cardGame:
+def cardGame():
+    global cardDict
+    cardDict = {'Mew': '10', 'Charizard': '8', 'Pikachu': '9', 'Eevee': '6','Blastoise':'7',"Snorlax": "1","Onyx":"5","Arcanine":"3"}
+    cardDeck = list(cardDict.keys())
+    random.shuffle(cardDeck)
+    global player1, player2
+    player1 = cardDeck[len(cardDeck) // 2:]
+    print(player1)
+    player2 = cardDeck[:len(cardDeck) // 2]
+    print(player2)
+
+
+def dice_roll():
+
+    global v1
+    global v2
+
+    v1 = randint(1, 6)
+    print("Dice value of Player 1:", v1)
+
+    v2 = randint(1, 6)
+    print("Dice value of Player 2:", v2)
+
+    while(v1==v2):
+
+        v1 = randint(1, 6)
+        print("Dice value of Player 1 again:", v1)
+
+        v2 = randint(1, 6)
+        print("Dice value of Player 2 again:", v2)
+
+def round1():
+    global x, y, cardP1, cardP2
+    if v1 > v2:
+        print("\nPlayer 1 begins the round\n")
+        # card_pick_player1()
+        global cardP1
+        global x
+        cardP1 = player1.pop(0)
+        x = cardDict.get(cardP1)
+
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+        # card_pick_player2()
+        # global cardP2
+        # global y
+        cardP2 = player2.pop(0)
+        y = cardDict.get(cardP2)
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+
+
+    else:
+        print("\nPlayer 2 begins the round\n")
+        # card_pick_player2()
+        # global cardP2
+        # global y
+        cardP2 = player2.pop(0)
+        y = cardDict.get(cardP2)
+
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+        # card_pick_player1()
+        # global cardP1
+        # global x
+        cardP1 = player1.pop(0)
+        x = cardDict.get(cardP1)
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+
+
+
+
+def win():
+    global x, y, cardP1, cardP2
+
+    if x > y:
+        print("\nPlayer 1 wins\n")
+        # global scoreP1
+        # scoreP1 = 0
+        # scoreP1 += 1
+
+
+    else:
+        print("\nPlayer 2 wins\n")
+        # global scoreP2
+        # scoreP2 = 0
+        # scoreP2 += 1
+
+def score_increment():
+    global scoreP1, scoreP2
+    if x > y:
+        scoreP1 += 1
+
+    else:
+        scoreP2 += 1
+
+
+def round2():
+    global x, y, cardP1, cardP2
+
+    if x > y:
+        print("\nPlayer 1 begins the round\n")
+        # card_pick_player1()
+        # global cardP1
+        # global x
+        cardP1 = player1.pop(0)
+        x = cardDict.get(cardP1)
+
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+        # card_pick_player2()
+        # global cardP2
+        # global y
+        cardP2 = player2.pop(0)
+        y = cardDict.get(cardP2)
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+
+    else:
+        print("\nPlayer 2 begins the round\n")
+        # card_pick_player2()
+        # global cardP2
+        # global y
+        cardP2 = player2.pop(0)
+        y = cardDict.get(cardP2)
+
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+        # card_pick_player1()
+        # global cardP1
+        # global x
+        cardP1 = player1.pop(0)
+        x = cardDict.get(cardP1)
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+
+def round3():
+    global x, y, cardP1, cardP2
+    if x > y:
+        print("\nPlayer 1 begins the round\n")
+
+        cardP1 = player1.pop(0)
+        x = cardDict.get(cardP1)
+
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+
+        cardP2 = player2.pop(0)
+        y = cardDict.get(cardP2)
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+
+    else:
+        print("\nPlayer 2 begins the round\n")
+        cardP2 = player2.pop(0)
+        y = cardDict.get(cardP2)
+
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+
+        cardP1 = player1.pop(0)
+        x = cardDict.get(cardP1)
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+
+
+def round4():
+    global x, y, cardP1, cardP2
+    if x > y:
+        print("\nPlayer 1 begins the round\n")
+        cardP1 = player1.pop()
+        x = cardDict.get(cardP1)
+
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+        cardP2 = player2.pop()
+        y = cardDict.get(cardP2)
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+
+
+    else:
+        print("\nPlayer 2 begins the round\n")
+        cardP2 = player2.pop()
+        y = cardDict.get(cardP2)
+
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+        cardP1 = player1.pop()
+        x = cardDict.get(cardP1)
+        print("Card of Player 1: {} = {}".format(cardP1, x))
+
+
+def spellForRound2():
+    global sp, newX
+    if x > y:
+        answer = input("\nDo want to use the spell for Player 2? Enter 'y' for Yes and 'n' for No: ")
+        if answer == 'y':
+            # Do this.
+            spellSelect = input("Choose the spell:\n1. God Spell\n2.Resurrect Spell\nEnter the number: ")
+            if spellSelect == '1':
+                print("You have selected the God Spell.")
+                print(player2)
+                cardNumber = input("Player 2 has 2 cards.\n Choose one number from 0 to 1: ")
+
+
+                if cardNumber == '0':
+                    sp = player2[0]
+                    newX = cardDict.get(sp)
+                    print(newX)
+
+                elif cardNumber == '1':
+                    sp = player2[1]
+                    newX = cardDict.get(sp)
+                    print(newX)
+
+                chooseSameorResurrect()
+                # print(cardNumber.format(len(player1),len(player1-1)))
+                # print(player1[cardNumber])
+
+
+            elif spellSelect == '2':
+                print("You have selected Resurrect spell.")
+                print(deck2)
+                randPick = random.choice(deck2)
+                print("Random card from outdated deck:",randPick)
+                newY=cardDict.get(randPick)
+                print(newY)
+
+            #     comparing p1 exsiting card with resurrect card of p2
+                if x > newY:
+                    print("player 1 wins the resurrect round")
+                else:
+                    print("player 2 wins the resurrect round")
+
+            else:
+                print(" Please 1 or 2")
+
+        elif answer == 'n':
+            round2()
+        else:
+            print("Please enter yes or no.")
+
+    else:
+        answer = input("Do want to use the spell for Player 1? Enter 'y' for Yes and 'n' for No: ")
+        if answer == 'y':
+            # Do this.
+            spellSelect = input("Choose the spell:\n1. God Spell\n2.Resurrect Spell\n Enter the number: ")
+            if spellSelect == '1':
+                print("You have selected the God Spell.")
+                print(player1)
+                cardNumber = input("Player 1 has 2 cards.\n Choose one number from 0 to 1: ")
+
+
+                if cardNumber == '0':
+                    cardP1 = player1[0]
+                    newX = cardDict.get(cardP1)
+                    print(newX)
+
+                elif cardNumber == '1':
+                    # print(player2[1])
+                    cardP1 = player1[1]
+                    newX = cardDict.get(cardP1)
+                    print(x)
+
+                chooseSameorResurrect()
+
+
+
+            elif spellSelect == '2':
+                print("You have selected Resurrect spell.")
+                randPick = random.choice(deck2)
+                print(deck2)
+                print("Random card from outdated deck:",randPick)
+                newY = cardDict.get(randPick)
+                print(newY)
+
+                # comparing p1 exsiting card with resurrect card of p2
+                if y > newY:
+                    print("player 1 wins the resurrect round")
+                else:
+                    print("player 2 wins the resurrect round")
+
+
+
+
+            else:
+                print(" Please 1 or 2")
+
+
+        elif answer == 'n':
+            round2()
+        else:
+            print("Please enter y or n.")
+
+def chooseSameorResurrect():
+    global sp
+    global newX
+
+    ch1 = input("Player 1 wants to choose:\n1. Resurrect\n2.Same card\n Enter the number: ")
+
+    if ch1=='1':
+        print("player 1 chose resurrect spell..")
+        randPick = random.choice(deck2)
+        print(deck2)
+        print("Random card from outdated deck:", randPick)
+        newY = cardDict.get(randPick)
+        print(newY)
+
+        # comparing p1 exsiting card with resurrect card of p2
+        if y > newY:
+            print("player 1 wins the resurrect round")
+        else:
+            print("player 2 wins the resurrect round")
+
+    #         reserrect function
+    elif ch1=='2':
+        print("Card of Player 1: {} = {}".format(sp, newX))
+        print("Card of Player 2: {} = {}".format(cardP2, y))
+
+        if newX > y:
+            print("Player 1 wins")
+        else:
+            print("Player 2 wins the round")
+
+
+def spellForRound3():
+    global sp, newX
+    if x > y:
+        answer = input("\nDo want to use the spell for Player 2? Enter 'y' for Yes and 'n' for No: ")
+        if answer == 'y':
+            # Do this.
+            spellSelect = input("Choose the spell:\n1. God Spell\n2.Resurrect Spell\nEnter the number: ")
+            if spellSelect == '1':
+                print("You have selected the God Spell.")
+                print(player2)
+                cardNumber = input("Player 2 has 2 cards.\n Choose one number from 0 to 2: ")
+
+
+                if cardNumber == '0':
+                    sp = player2[0]
+                    newX = cardDict.get(sp)
+                    print(newX)
+
+                elif cardNumber == '1':
+                    sp = player2[1]
+                    newX = cardDict.get(sp)
+                    print(newX)
+
+                elif cardNumber == '2':
+                    sp = player2[2]
+                    newX = cardDict.get(sp)
+                    print(newX)
+
+                chooseSameorResurrect()
+                # print(cardNumber.format(len(player1),len(player1-1)))
+                # print(player1[cardNumber])
+
+
+            elif spellSelect == '2':
+                print("You have selected Resurrect spell.")
+                print(deck2)
+                randPick = random.choice(deck2)
+                print("Random card from outdated deck:",randPick)
+                newY=cardDict.get(randPick)
+                print(newY)
+
+            #     comparing p1 exsiting card with resurrect card of p2
+                if x > newY:
+                    print("player 1 wins the resurrect round")
+                else:
+                    print("player 2 wins the resurrect round")
+
+            else:
+                print(" Please 1 or 2")
+
+        elif answer == 'n':
+            round2()
+        else:
+            print("Please enter yes or no.")
+
+    else:
+        answer = input("Do want to use the spell for Player 1? Enter 'y' for Yes and 'n' for No: ")
+        if answer == 'y':
+            # Do this.
+            spellSelect = input("Choose the spell:\n1. God Spell\n2.Resurrect Spell\n Enter the number: ")
+            if spellSelect == '1':
+                print("You have selected the God Spell.")
+                print(player1)
+                cardNumber = input("Player 1 has 2 cards.\n Choose one number from 0 to 1: ")
+
+
+                if cardNumber == '0':
+                    cardP1 = player1[0]
+                    newX = cardDict.get(cardP1)
+                    print(newX)
+
+                elif cardNumber == '1':
+                    # print(player2[1])
+                    cardP1 = player1[1]
+                    newX = cardDict.get(cardP1)
+                    print(x)
+
+                elif cardNumber == '2':
+                    sp = player2[2]
+                    newX = cardDict.get(sp)
+                    print(newX)
+
+                chooseSameorResurrect()
+
+
+
+            elif spellSelect == '2':
+                print("You have selected Resurrect spell.")
+                randPick = random.choice(deck2)
+                print(deck2)
+                print("Random card from outdated deck:",randPick)
+                newY = cardDict.get(randPick)
+                print(newY)
+
+                # comparing p1 exsiting card with resurrect card of p2
+                if y > newY:
+                    print("player 1 wins the resurrect round")
+                else:
+                    print("player 2 wins the resurrect round")
+
+            else:
+                print(" Please 1 or 2")
+
+
+        elif answer == 'n':
+            round2()
+        else:
+            print("Please enter yes or no.")
+
+def spellForRound3():
+    global sp, newX
+    if x > y:
+        answer = input("\nDo want to use the spell for Player 2? Enter 'y' for Yes and 'n' for No: ")
+        if answer == 'y':
+            # Do this.
+            spellSelect = input("Choose the spell:\n1. God Spell\n2.Resurrect Spell\nEnter the number: ")
+            if spellSelect == '1':
+                print("You have selected the God Spell.")
+                print(player2)
+                cardNumber = input("Player 2 has 2 cards.\n Choose one number from 0 to 2: ")
+
+
+                if cardNumber == '0':
+                    sp = player2[0]
+                    newX = cardDict.get(sp)
+                    print(newX)
+
+                elif cardNumber == '1':
+                    sp = player2[1]
+                    newX = cardDict.get(sp)
+                    print(newX)
+
+                elif cardNumber == '2':
+                    sp = player2[2]
+                    newX = cardDict.get(sp)
+                    print(newX)
+
+                chooseSameorResurrect()
+                # print(cardNumber.format(len(player1),len(player1-1)))
+                # print(player1[cardNumber])
+
+
+            elif spellSelect == '2':
+                print("You have selected Resurrect spell.")
+                print(deck2)
+                randPick = random.choice(deck2)
+                print("Random card from outdated deck:",randPick)
+                newY=cardDict.get(randPick)
+                print(newY)
+
+            #     comparing p1 exsiting card with resurrect card of p2
+                if x > newY:
+                    print("player 1 wins the resurrect round")
+                else:
+                    print("player 2 wins the resurrect round")
+
+            else:
+                print(" Please 1 or 2")
+
+        elif answer == 'n':
+            round3()
+        else:
+            print("Please enter yes or no.")
+
+    else:
+        answer = input("Do want to use the spell for Player 1? Enter 'y' for Yes and 'n' for No: ")
+        if answer == 'y':
+            # Do this.
+            spellSelect = input("Choose the spell:\n1. God Spell\n2.Resurrect Spell\n Enter the number: ")
+            if spellSelect == '1':
+                print("You have selected the God Spell.")
+                print(player1)
+                cardNumber = input("Player 1 has 2 cards.\n Choose one number from 0 to 1: ")
+
+
+                if cardNumber == '0':
+                    cardP1 = player1[0]
+                    newX = cardDict.get(cardP1)
+                    print(newX)
+
+                elif cardNumber == '1':
+                    # print(player2[1])
+                    cardP1 = player1[1]
+                    newX = cardDict.get(cardP1)
+                    print(x)
+
+                elif cardNumber == '2':
+                    sp = player2[2]
+                    newX = cardDict.get(sp)
+                    print(newX)
+
+                chooseSameorResurrect()
+
+
+
+            elif spellSelect == '2':
+                print("You have selected Resurrect spell.")
+                randPick = random.choice(deck2)
+                print(deck2)
+                print("Random card from outdated deck:",randPick)
+                newY = cardDict.get(randPick)
+                print(newY)
+
+                # comparing p1 exsiting card with resurrect card of p2
+                if y > newY:
+                    print("player 1 wins the resurrect round")
+                else:
+                    print("player 2 wins the resurrect round")
+
+            else:
+                print(" Please 1 or 2")
+
+
+        elif answer == 'n':
+            round4()
+        else:
+            print("Please enter yes or no.")
+
+
+
+# function calling
+cardGame()
+dice_roll()
+round1()
+# updating outdated deck
+deck2 = []
+deck2.insert(0,cardP1)
+deck2.insert(1,cardP2)
+win()
+
+global scoreP1
+global scoreP2
+if x>y:
+    scoreP1 = 1
+    scoreP2=0
+else:
+    scoreP2=1
+    scoreP1=0
+
+round2()
+deck2.insert(2,cardP1)
+deck2.insert(3,cardP2)
+print(deck2)
+spellForRound2()
+round3()
+deck2.insert(4,cardP1)
+deck2.insert(5,cardP2)
+print(deck2)
+spellForRound3()
+round4()
+deck2.insert(4,cardP1)
+deck2.insert(5,cardP2)
+print(deck2)
+
+# win()
+# score_increment()
+
+
+print("Final score of player 1 = ", scoreP1)
+
+print("Final score of player 2 = ", scoreP2)
+
+if scoreP1>scoreP2:
+    print("\nPlayer 1 is the WINNER!\n")
+else:
+    print("\nPlayer 2 is the WINNER!\n")
+
+
