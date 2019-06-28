@@ -1,0 +1,85 @@
+Exercise 1
+import numpy as np
+import time
+array1 = np.array([0,1,2,3,4,5,6,7,8,9])
+print(array1)
+
+array1[array1 % 2 !=0] = -1
+print("Replacing all odd numbers with -1")
+time.sleep(2)
+print(array1)
+
+Exercise 2
+import numpy as np
+
+# a = np.array([1,2,3,4,5,6])
+a = np.arange(16)
+b = np.reshape(a,(2,-1))
+print(b)
+
+Exercise 3
+import numpy as np
+a=np.array([1,2,3])
+# First Option
+print(np.r_[np.repeat(a, 3), np.tile(a, 3)])
+
+# Second Option
+b= np.indices((3,3))
+print(a[b])
+
+Exercise 4
+import numpy as np
+
+array1 = np.array([0,8,6,0,1,1])
+array2 = np.array([0,8,5,6,9,7])
+
+common = np.intersect1d(array1,array2)
+print(common)
+
+Exercise 5
+x = np.array([1,2,3,2,3,4,3,4,5,6])
+y = np.array([7,2,10,2,7,4,9,4,9,8])
+
+match = np.where(x==y)
+print(match)
+
+Exercise 6
+import numpy as np
+
+sampl = np.random.uniform(low=5, high=10, size=(5,3))
+print(sampl)
+
+Exercise 7
+import numpy as np
+
+np.set_printoptions(threshold=5)
+print(np.arange(15))
+
+Exercise 8
+import numpy as np
+
+np.random.seed(100)
+rand_arr = np.random.random([3,3])/1e3
+rand_arr
+
+np.set_printoptions(suppress=True, precision=6)
+print(rand_arr)
+
+Exercise 9 
+import numpy as np
+arr = np.arange(9).reshape(3, 3)
+print("Original array:")
+print(arr)
+arr[[1, 0],:] = arr[[0, 1],:]
+print("\nAfter swapping of rows")
+print(arr)
+
+Exercise 10
+import numpy as np
+arr = np.arange(9).reshape(3, 3)
+print("Original array:")
+print(arr)
+arr[:,[0, 1]] = arr[:,[1, 0]]
+print("\nAfter swapping of columns")
+print(arr)
+
